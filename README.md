@@ -7,6 +7,11 @@
   - Used:
     - Headings: https://fonts.google.com/specimen/Montserrat
     - Body Text: https://fonts.google.com/specimen/Lora
+- Images were compressed using https://squoosh.app/editor with the configs
+  - resize method: Lanczos3
+  - preset: custom 
+  - AVIF format
+  - quality: 70
 
 # Wiki 
 
@@ -21,3 +26,5 @@
 - https://www.youtube.com/watch?v=FMrWHGrC4hY
 - https://www.youtube.com/watch?v=4cfgmBNV6TM
 - https://www.lambdatest.com/blog/accessible-carousels/
+- https://hometalk.chiefarchitect.com/gallery/album/41-danish-traditional-parcel-home
+- https://www.svgrepo.com/download/452084/pdf.svg, https://svgomg.net, https://www.svgviewer.dev

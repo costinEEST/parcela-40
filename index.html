@@ -6,12 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="robots" content="noindex,nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Balotești-39</title>
+    <title>Parcela 40</title>
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <link rel="icon" href="/favicon/favicon-32x32.png" type="image/png" />
     <!-- <link rel="icon" href="/favicon/favicon.ico" sizes="32x32"> -->
     <!-- <link rel="icon" href="" type="image/svg+xml"> -->
     <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+    <link rel="preload" as="image" href="/img/a1920.avif" fetchpriority="high">
+    <link rel="preload" as="image" href="/img/p1920.avif" fetchpriority="high">
     <style>
         @font-face {
             font-display: swap;
@@ -95,9 +97,15 @@
 
         header {
             h1 {
-                text-align: center;
-                font-size: 24px;
+                font-family: "Montserrat", sans-serif;
                 font-weight: 700;
+                font-size: 3rem;
+                letter-spacing: 0.25em;
+                text-transform: uppercase;
+                text-align: center;
+                color: transparent;
+                /* no fill */
+                -webkit-text-stroke: 2px #6c6c6c;
             }
         }
 
@@ -199,6 +207,31 @@
                     img {
                         width: 100px;
                     }
+
+                    .pdfs {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1em;
+                    }
+
+                    .pdf-link {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 0.35rem;
+                        font-family: "Montserrat", sans-serif;
+                        font-weight: 700;
+                        text-decoration: none;
+
+                        &:hover,
+                        &:focus {
+                            text-decoration: underline;
+                        }
+
+                        .pdf-icon {
+                            width: 28px;
+                            height: 28px;
+                        }
+                    }
                 }
 
                 &+button {
@@ -209,12 +242,19 @@
 
         .slider {
             position: relative;
-            width: 80vw;
-            max-height: 60vh;
+            /* width: 80vw; */
+            /* max-height: 60vh; */
             margin: auto;
             overflow: hidden;
             display: flex;
             align-items: center;
+        }
+
+        .slides,
+        .slide,
+        .slide picture {
+            width: 100%;
+            height: 100%;
         }
 
         .slides {
@@ -230,10 +270,15 @@
             justify-content: center;
             align-items: center;
 
+            picture {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+                max-height: 100%;
+            }
+
             img {
                 width: 100%;
-                /* display: block; */
-                max-width: 100%;
                 height: auto;
                 max-height: 100%;
             }
@@ -249,6 +294,7 @@
             cursor: pointer;
             padding: 10px;
             z-index: 100;
+            font-size: 2.5rem;
 
             &.prev {
                 left: 10px;
@@ -263,7 +309,7 @@
 
 <body>
     <header class="header">
-        <h1>BALOTESTI-39</h1>
+        <h1>parcela 40</h1>
     </header>
     <nav>
         <ul class="tabs">
@@ -279,7 +325,7 @@
         <section id="case" class="section">
             <div class="accordion">
                 <button aria-expanded="false" aria-controls="casa-a" id="casa-a-button">
-                    CASA TIP A
+                    Casă tip A
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="plus-icon">
                         <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 5v14m-7-7h14" />
@@ -287,13 +333,45 @@
                 </button>
                 <div id="casa-a" class="panel" role="region" aria-labelledby="casa-a-button">
                     <div class="content">
-                        <img src="./images/house.svg" alt="House type A" />
-                        <a href="http://www.muzee-valcea.ro/buridava/B8_37.godea.pdf" download>download PDF</a>
+                        <img src="./images/house.svg" alt="Casă" />
+
+                        <div class="pdfs">
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-a0-parter.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>a0-parter.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-a0-etaj.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>a0-etaj.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-a1-parter.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>a1-parter.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-a1-etaj.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>a1-etaj.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-a2-parter.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>a2-parter.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-a2-etaj.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>a2-etaj.pdf</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <button aria-expanded="false" aria-controls="casa-b" id="casa-b-button">
-                    CASA TIP B
+                    Casă tip B
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="plus-icon">
                         <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 5v14m-7-7h14" />
@@ -301,13 +379,25 @@
                 </button>
                 <div id="casa-b" class="panel" role="region" aria-labelledby="casa-b-button">
                     <div class="content">
-                        <img src="./images/house.svg" alt="House type B" />
-                        <a href="http://www.muzee-valcea.ro/buridava/B8_37.godea.pdf" download>download PDF</a>
+                        <img src="./images/house.svg" alt="Casă" />
+
+                        <div class="pdfs">
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-B-parter.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>B-parter.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-B-etaj.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>B-etaj.pdf</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <button aria-expanded="false" aria-controls="casa-c" id="casa-c-button">
-                    CASA TIP C
+                    Casă tip C
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="plus-icon">
                         <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 5v14m-7-7h14" />
@@ -315,13 +405,35 @@
                 </button>
                 <div id="casa-c" class="panel" role="region" aria-labelledby="casa-c-button">
                     <div class="content">
-                        <img src="./images/house.svg" alt="House type C" />
-                        <a href="http://www.muzee-valcea.ro/buridava/B8_37.godea.pdf" download>download PDF</a>
+                        <img src="./images/house.svg" alt="Casă" />
+
+                        <div class="pdfs">
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-c1-parter.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>c1-parter.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-c1-etaj.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>c1-etaj.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-c2-parter.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>c2-parter.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-c2-etaj.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>c2-etaj.pdf</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <button aria-expanded="false" aria-controls="casa-d" id="casa-d-button">
-                    CASA TIP D
+                    Casă tip D
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="plus-icon">
                         <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 5v14m-7-7h14" />
@@ -329,8 +441,130 @@
                 </button>
                 <div id="casa-d" class="panel" role="region" aria-labelledby="casa-d-button">
                     <div class="content">
-                        <img src="./images/house.svg" alt="House type D" />
-                        <a href="http://www.muzee-valcea.ro/buridava/B8_37.godea.pdf" download>download PDF</a>
+                        <img src="./images/house.svg" alt="Casă" />
+
+                        <div class="pdfs">
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-d1-parter.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>d1-parter.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-d1-etaj1.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>d1-etaj1.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-d1-etaj2.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>d1-etaj2.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-d2-parter.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>d2-parter.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-d2-etaj 1.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>d2-etaj 1.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-d2-etaj2.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>d2-etaj2.pdf</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <button aria-expanded="false" aria-controls="casa-e" id="casa-e-button">
+                    Casă tip E
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="plus-icon">
+                        <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 5v14m-7-7h14" />
+                    </svg>
+                </button>
+                <div id="casa-e" class="panel" role="region" aria-labelledby="casa-e-button">
+                    <div class="content">
+                        <img src="./images/house.svg" alt="Casă" />
+
+                        <div class="pdfs">
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-e-parter.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>e-parter.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-e-etaj1.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>e-etaj1.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-e-etaj2.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>e-etaj2.pdf</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <button aria-expanded="false" aria-controls="casa-f" id="casa-f-button">
+                    Casă tip F
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="plus-icon">
+                        <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 5v14m-7-7h14" />
+                    </svg>
+                </button>
+                <div id="casa-f" class="panel" role="region" aria-labelledby="casa-f-button">
+                    <div class="content">
+                        <img src="./images/house.svg" alt="Casă" />
+
+                        <div class="pdfs">
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-f1-parter.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>f1-parter.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-f1-etaj.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>f1-etaj.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3.2_-f2-parter.pdf" target="_blank"
+                                rel="noopener" title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>f2-parter.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3.2_-f2-etaj.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>f2-etaj.pdf</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <button aria-expanded="false" aria-controls="casa-g" id="casa-g-button">
+                    Casă tip G
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="plus-icon">
+                        <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 5v14m-7-7h14" />
+                    </svg>
+                </button>
+                <div id="casa-g" class="panel" role="region" aria-labelledby="casa-g-button">
+                    <div class="content">
+                        <img src="./images/house.svg" alt="Casă" />
+
+                        <div class="pdfs">
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-g-parter.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>g-parter.pdf</span>
+                            </a>
+                            <a class="pdf-link" href="./pdf/balotesti v 3_-g-etaj.pdf" target="_blank" rel="noopener"
+                                title="Se poate deschide în browser sau descărca">
+                                <img src="./pdf.svg" alt="PDF icon" class="pdf-icon" aria-hidden="true" />
+                                <span>g-etaj.pdf</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -339,31 +573,56 @@
         <section id="galerie" class="section">
             <div class="slider" aria-roledescription="carousel" aria-label="Galerie de imagini">
                 <div class="slides" aria-live="off">
-                    <div class="slide" role="group" aria-label="Blazon">
-                        <img src="https://scontent.fotp3-1.fna.fbcdn.net/v/t1.6435-9/67872021_2388551427892295_902796400427794432_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=25d718&_nc_ohc=asBNnuh_o-QQ7kNvgGA3cR_&_nc_ht=scontent.fotp3-1.fna&oh=00_AYDTXKKhQ0YSsbiFU-mQH97CKq7AsUzprKELY0YPwQOfhw&oe=66C47141"
-                            alt="Blazon" />
+                    <div class="slide" role="group" aria-label="casa tip a - randare">
+                        <picture>
+                            <source type="image/avif" srcset="
+                    /img/a480.avif   480w,
+                    /img/a768.avif   768w,
+                    /img/a1024.avif 1024w,
+                    /img/a1920.avif 1920w
+                  " sizes="(max-width: 768px) 100vw, 
+                                   (max-width: 1024px) 90vw, 
+                                   1920px" />
+                            <img src="img/a1920.avif" alt="casa tip a - randare" loading="lazy" />
+                        </picture>
                     </div>
-                    <div class="slide" role="group" aria-label="Șosea">
-                        <img src="https://scontent.fotp3-2.fna.fbcdn.net/v/t39.30808-6/405739361_7050270851702569_3014775189903361739_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=2285d6&_nc_ohc=3W811-A1Z_gQ7kNvgHStDte&_nc_ht=scontent.fotp3-2.fna&oh=00_AYBwOzzIo0lmCITliswyF8VcBW8p76XU0ZBbubQFnMSbVg&oe=66A2E62A"
-                            alt="Șosea" />
-                    </div>
-                    <div class="slide" role="group" aria-label="Pe hartă">
-                        <img src="https://www.outdooractive.com/api/staticmap?i=33309101&size=medium" alt="Pe hartă" />
-                    </div>
-                    <div class="slide" role="group" aria-label="Stadion">
-                        <img src="https://www.ripensia-sport-magazin.ro/wp-content/uploads/2017/10/Stadion-Balotesti.jpg"
-                            alt="Stadion" />
-                    </div>
-                    <div class="slide" role="group" aria-label="Primăria">
-                        <img src="https://primariabalotesti.ro/wp-content/uploads/2018/07/primaria-google-1.jpg"
-                            alt="Primăria" />
+                    <div class="slide" role="group" aria-label="randare panti">
+                        <picture>
+                            <source type="image/avif" srcset="
+                    /img/p480.avif   480w,
+                    /img/p768.avif   768w,
+                    /img/p1024.avif 1024w,
+                    /img/p1920.avif 1920w
+                  " sizes="(max-width: 768px) 100vw, 
+                                   (max-width: 1024px) 90vw, 
+                                   1920px" />
+                            <img src="img/p1920.avif" alt="randare panti" loading="lazy" />
+                        </picture>
                     </div>
                 </div>
-                <button class="slide-btn prev" aria-controls="slides" aria-label="Înapoi">❮</button>
-                <button class="slide-btn next" aria-controls="slides" aria-label="Înainte">❯</button>
+                <button class="slide-btn prev" aria-controls="slides" aria-label="Înapoi">
+                    ❮
+                </button>
+                <button class="slide-btn next" aria-controls="slides" aria-label="Înainte">
+                    ❯
+                </button>
             </div>
         </section>
-        <section id="contact" class="section">Content for Contact</section>
+        <section id="contact" class="section">
+            <h3>Echipa</h3>
+            <ul>
+                <li>ptm-arh Valer</li>
+                <li>ptm-arh Tovarăș</li>
+                <li>ptm-arh Tovarășa1</li>
+                <li>ptm-arh Tovarășa2</li>
+            </ul>
+
+            <h3>Date de contact</h3>
+            <address>
+                <p>Email: <a href="mailto:catunul@yahoo.com">catunul@yahoo.com</a></p>
+                <p>Tel: <a href="tel:+40760695414">+40 760 695 414</a></p>
+            </address>
+        </section>
     </main>
     <script>
         document.querySelector("nav .tabs").addEventListener("click", (e) => {
@@ -411,39 +670,43 @@
             }
         });
 
-        const slidesContainer = document.querySelector('.slides');
+        const slidesContainer = document.querySelector(".slides");
         const slides = Array.from(slidesContainer.children);
         let currentIndex = 0;
 
         function updateSlidePosition() {
             slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
             slides.forEach((slide, index) => {
-                slide.setAttribute('aria-hidden', index !== currentIndex);
+                slide.setAttribute("aria-hidden", index !== currentIndex);
             });
         }
 
         function handleArrowKeys(e) {
-            if (e.key === 'ArrowLeft') {
+            if (e.key === "ArrowLeft") {
                 prevSlide();
-            } else if (e.key === 'ArrowRight') {
+            } else if (e.key === "ArrowRight") {
                 nextSlide();
             }
         }
 
         function prevSlide() {
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+            currentIndex = currentIndex > 0 ? currentIndex - 1 : slides.length - 1;
             updateSlidePosition();
         }
 
         function nextSlide() {
-            currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+            currentIndex = currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
             updateSlidePosition();
         }
 
-        document.querySelector('.slide-btn.prev').addEventListener('click', prevSlide);
-        document.querySelector('.slide-btn.next').addEventListener('click', nextSlide);
+        document
+            .querySelector(".slide-btn.prev")
+            .addEventListener("click", prevSlide);
+        document
+            .querySelector(".slide-btn.next")
+            .addEventListener("click", nextSlide);
 
-        slidesContainer.addEventListener('keydown', handleArrowKeys);
+        slidesContainer.addEventListener("keydown", handleArrowKeys);
 
         updateSlidePosition();
     </script>
