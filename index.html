@@ -14,9 +14,9 @@
     <!-- <link rel="icon" href="" type="image/svg+xml"> -->
     <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
     <link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@main/img/a1920.avif"
-        fetchpriority="high">
+        fetchpriority="high" />
     <link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@main/img/p1920.avif"
-        fetchpriority="high">
+        fetchpriority="high" />
     <style>
         @font-face {
             font-display: swap;
@@ -684,6 +684,15 @@
         </section>
     </main>
     <script>
+        // Register service worker for caching
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker
+                    .register("./sw.js")
+                    .catch((err) => console.log("SW registration failed:", err));
+            });
+        }
+
         document.querySelector("nav .tabs").addEventListener("click", (e) => {
             if (e.target && e.target.nodeName === "A") {
                 // e.preventDefault();
