@@ -1,135 +1,98 @@
-const CACHE_VERSION = "v1.0.0";
+const CACHE_VERSION = "v2";
 const CACHE_NAME = `parcela40-${CACHE_VERSION}`;
 
-// Assets to cache immediately on install
-const PRECACHE_ASSETS = [
-  "/",
-  "/index.html",
-  // Fonts
-  "/fonts/lora-v35-latin-ext-regular.woff2",
-  "/fonts/lora-v35-latin-ext-700.woff2",
-  "/fonts/merriweather-v30-latin-ext-regular.woff2",
-  "/fonts/merriweather-v30-latin-ext-700.woff2",
-  "/fonts/montserrat-v26-latin-ext-regular.woff2",
-  "/fonts/montserrat-v26-latin-ext-700.woff2",
-  "/fonts/open-sans-v40-latin-ext-regular.woff2",
-  "/fonts/open-sans-v40-latin-ext-700.woff2",
-  // SVGs
-  "/images/house.svg",
-  "/pdf.svg",
-  "/favicon/favicon-32x32.png",
-  "/favicon/apple-touch-icon.png",
-  "/favicon/site.webmanifest",
-];
+const OFFLINE_URL = "/offline.html";
 
-// PDFs to cache on demand
-const PDF_PATTERN = /\.pdf$/;
-const CDN_PATTERN = /cdn\.jsdelivr\.net/;
+// Only local files that MUST exist
+const PRECACHE = ["/", "/index.html", OFFLINE_URL];
 
-// Install event - precache essential assets
+// Patterns
+const CDN = /cdn\.jsdelivr\.net/;
+const FONT = /\.(woff2?|ttf|otf)$/i;
+const IMAGE = /\.(png|jpg|jpeg|svg|avif|webp)$/i;
+const PDF = /\.pdf$/i;
+
+/* ---------------- INSTALL ---------------- */
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(PRECACHE_ASSETS);
-    })
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE))
   );
   self.skipWaiting();
 });
 
-// Activate event - clean up old caches
+/* ---------------- ACTIVATE ---------------- */
+
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames
-          .filter(
-            (name) => name.startsWith("parcela40-") && name !== CACHE_NAME
-          )
-          .map((name) => caches.delete(name))
-      );
-    })
+    caches
+      .keys()
+      .then((keys) =>
+        Promise.all(
+          keys
+            .filter((k) => k.startsWith("parcela40-") && k !== CACHE_NAME)
+            .map((k) => caches.delete(k))
+        )
+      )
   );
   self.clients.claim();
 });
 
-// Fetch event - serve from cache, fallback to network
+/* ---------------- FETCH ---------------- */
+
 self.addEventListener("fetch", (event) => {
-  const { request } = event;
-  const url = new URL(request.url);
+  const req = event.request;
 
-  // CDN images: Cache-first (they're versioned with commit hash)
-  if (CDN_PATTERN.test(request.url)) {
-    event.respondWith(
-      caches.match(request).then((cachedResponse) => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-        return fetch(request).then((response) => {
-          if (response.ok) {
-            const responseClone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(request, responseClone);
-            });
-          }
-          return response;
-        });
-      })
-    );
-    return;
-  }
+  // Ignore non-GET
+  if (req.method !== "GET") return;
 
-  // PDFs: Cache-first (large files, rarely change)
-  if (PDF_PATTERN.test(url.pathname)) {
-    event.respondWith(
-      caches.match(request).then((cachedResponse) => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-        return fetch(request).then((response) => {
-          if (response.ok) {
-            const responseClone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(request, responseClone);
-            });
-          }
-          return response;
-        });
-      })
-    );
-    return;
-  }
+  const url = new URL(req.url);
 
-  // HTML: Network-first (ensure fresh content)
-  if (request.headers.get("accept").includes("text/html")) {
+  /* ---------- HTML (network-first + offline) ---------- */
+  if (req.headers.get("accept")?.includes("text/html")) {
     event.respondWith(
-      fetch(request)
-        .then((response) => {
-          const responseClone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(request, responseClone);
-          });
-          return response;
+      fetch(req)
+        .then((res) => {
+          const copy = res.clone();
+          caches.open(CACHE_NAME).then((c) => c.put(req, copy));
+          return res;
         })
-        .catch(() => caches.match(request))
+        .catch(() => caches.match(OFFLINE_URL))
     );
     return;
   }
 
-  // Everything else: Cache-first with network fallback
-  event.respondWith(
-    caches.match(request).then((cachedResponse) => {
-      return (
-        cachedResponse ||
-        fetch(request).then((response) => {
-          if (response.ok) {
-            const responseClone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(request, responseClone);
-            });
-          }
-          return response;
-        })
-      );
-    })
-  );
+  /* ---------- Fonts (cache-first, critical for LCP) ---------- */
+  if (FONT.test(url.pathname)) {
+    event.respondWith(cacheFirst(req));
+    return;
+  }
+
+  /* ---------- CDN assets: images + PDFs ---------- */
+  if (
+    CDN.test(req.url) &&
+    (IMAGE.test(url.pathname) || PDF.test(url.pathname))
+  ) {
+    event.respondWith(cacheFirst(req));
+    return;
+  }
+
+  /* ---------- Default ---------- */
+  event.respondWith(caches.match(req).then((cached) => cached || fetch(req)));
 });
+
+/* ---------------- Helpers ---------------- */
+
+function cacheFirst(request) {
+  return caches.match(request).then((cached) => {
+    if (cached) return cached;
+
+    return fetch(request).then((res) => {
+      if (res.ok) {
+        const copy = res.clone();
+        caches.open(CACHE_NAME).then((c) => c.put(request, copy));
+      }
+      return res;
+    });
+  });
+}

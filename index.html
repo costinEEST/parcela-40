@@ -788,6 +788,38 @@
 
         updateSlidePosition();
     </script>
+
+    <script>
+        // LCP logging (works in Chrome; buffered catches early entries)
+        (function () {
+            if (!("PerformanceObserver" in window)) return;
+
+            let lastEntry;
+
+            const po = new PerformanceObserver((list) => {
+                const entries = list.getEntries();
+                lastEntry = entries[entries.length - 1];
+            });
+
+            try {
+                po.observe({ type: "largest-contentful-paint", buffered: true });
+            } catch {
+                return;
+            }
+
+            function report() {
+                if (!lastEntry) return;
+                // startTime is in ms since navigation start
+                console.log("[LCP] ms:", lastEntry.startTime.toFixed(0), lastEntry);
+            }
+
+            document.addEventListener("visibilitychange", () => {
+                if (document.visibilityState === "hidden") report();
+            });
+
+            window.addEventListener("pagehide", report);
+        })();
+    </script>
 </body>
 
 </html>
