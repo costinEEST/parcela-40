@@ -93,6 +93,39 @@
             color: #333;
         }
 
+        .video-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            background: #000;
+
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: rgba(255, 255, 255, 0.6);
+            }
+
+        }
+
+        .video-bg iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 177.77vh;
+            /* 16:9 ratio */
+            height: 100vh;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .video-bg {
+                display: none;
+            }
+        }
+
         h1,
         h2,
         h3,
@@ -101,6 +134,13 @@
         h6 {
             font-family: "Montserrat", sans-serif;
             margin: 0;
+        }
+
+        header,
+        nav,
+        main {
+            position: relative;
+            z-index: 1;
         }
 
         header {
@@ -117,6 +157,11 @@
                 color: transparent;
                 -webkit-text-stroke: 2px #555;
                 margin: 0;
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
             }
         }
 
@@ -319,8 +364,16 @@
 </head>
 
 <body>
+    <div class="video-bg">
+        <iframe
+            src="https://www.youtube-nocookie.com/embed/Z2DC9mqBEVo?start=58&autoplay=1&mute=1&controls=0&loop=1&playlist=Z2DC9mqBEVo&playsinline=1"
+            title="Background video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+    </div>
+
     <header class="header">
-        <h1>parcela 40</h1>
+        <h1><a href="/">parcela 40</a></h1>
     </header>
     <nav>
         <ul class="tabs">
