@@ -14,83 +14,32 @@
     <!-- <link rel="icon" href="" type="image/svg+xml"> -->
     <link rel="apple-touch-icon"
         href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/favicon/apple-touch-icon.png" />
-    <link rel="preload"
-        href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/fonts/montserrat-v26-latin-ext-700.woff2"
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@3d7df/fonts/BankGothicCLtBT-Light.woff2"
         as="font" type="font/woff2" crossorigin />
 
     <style>
-        @font-face {
-            font-display: swap;
-            font-family: "Lora";
-            font-style: normal;
-            font-weight: 400;
-            src: url("https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/fonts/lora-v35-latin-ext-regular.woff2") format("woff2");
+        :root {
+            --main-color: #00a759;
         }
 
         @font-face {
             font-display: swap;
-            font-family: "Lora";
+            font-family: "BankGothic";
             font-style: normal;
-            font-weight: 700;
-            src: url("https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/fonts/lora-v35-latin-ext-700.woff2") format("woff2");
-        }
-
-        @font-face {
-            font-display: swap;
-            font-family: "Merriweather";
-            font-style: normal;
-            font-weight: 400;
-            src: url("https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/fonts/merriweather-v30-latin-ext-regular.woff2") format("woff2");
-        }
-
-        @font-face {
-            font-display: swap;
-            font-family: "Merriweather";
-            font-style: normal;
-            font-weight: 700;
-            src: url("https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/fonts/merriweather-v30-latin-ext-700.woff2") format("woff2");
-        }
-
-        @font-face {
-            font-display: swap;
-            font-family: "Montserrat";
-            font-style: normal;
-            font-weight: 400;
-            src: url("https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/fonts/montserrat-v26-latin-ext-regular.woff2") format("woff2");
-        }
-
-        @font-face {
-            font-display: swap;
-            font-family: "Montserrat";
-            font-style: normal;
-            font-weight: 700;
-            src: url("https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/fonts/montserrat-v26-latin-ext-700.woff2") format("woff2");
-        }
-
-        @font-face {
-            font-display: swap;
-            font-family: "Open Sans";
-            font-style: normal;
-            font-weight: 400;
-            src: url("https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/fonts/open-sans-v40-latin-ext-regular.woff2") format("woff2");
-        }
-
-        @font-face {
-            font-display: swap;
-            font-family: "Open Sans";
-            font-style: normal;
-            font-weight: 700;
-            src: url("https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/fonts/open-sans-v40-latin-ext-700.woff2") format("woff2");
+            font-weight: 300;
+            src: url("https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@3d7df/fonts/BankGothicCLtBT-Light.woff2") format("woff2");
         }
 
         body,
         html {
-            margin: 0;
+            max-width: 768px;
+            margin: 0 auto;
             padding: 0;
-            font-family: "Lora", serif;
+            font-family: "BankGothic", sans-serif;
             font-size: 16px;
             line-height: 1.6;
-            color: #333;
+            color: var(--main-color);
+            text-transform: uppercase;
         }
 
         .video-bg {
@@ -132,7 +81,6 @@
         h4,
         h5,
         h6 {
-            font-family: "Montserrat", sans-serif;
             margin: 0;
         }
 
@@ -144,40 +92,45 @@
         }
 
         header {
-            padding: 2rem 0 1.5rem;
-            background: #fff;
+            /* padding: 2rem 0 1.5rem; */
+            background: transparent;
 
             h1 {
-                font-family: "Montserrat", sans-serif;
                 font-weight: 700;
                 font-size: clamp(2rem, 5vw, 3.5rem);
-                letter-spacing: 0.3em;
-                text-transform: uppercase;
-                text-align: center;
-                color: transparent;
-                -webkit-text-stroke: 2px #555;
-                margin: 0;
             }
 
             a {
-                text-decoration: none;
+                display: grid;
+                grid-template-columns: 1fr auto;
+                align-items: center;
                 color: inherit;
+                text-decoration: none;
+            }
+
+            .left {
+                justify-self: start;
+            }
+
+            .right {
+                justify-self: end;
             }
         }
+
 
         .tabs {
             display: flex;
             flex-wrap: wrap;
             list-style-type: none;
             padding: 0;
+            margin: 0;
             text-align: center;
-            background: #eee;
 
             .tab {
                 &.active {
                     a {
                         background-color: #d3d3d3;
-                        color: #000;
+                        color: var(--main-color);
                     }
                 }
 
@@ -198,8 +151,7 @@
                 display: inline-block;
                 padding: 10px 20px;
                 text-decoration: none;
-                color: black;
-                font-family: "Montserrat", sans-serif;
+                color: var(--main-color);
                 font-weight: 700;
             }
         }
@@ -207,7 +159,7 @@
         .section {
             display: none;
             padding: 20px;
-            border: 1px solid #ccc;
+            border: 1px solid var(--main-color);
             margin-top: 10px;
         }
 
@@ -216,7 +168,7 @@
 
             button {
                 background-color: #d3e5ff;
-                border: 1px solid #ccc;
+                border: 1px solid var(--main-color);
                 padding: 1em;
                 width: 100%;
                 text-align: left;
@@ -261,7 +213,8 @@
                     align-items: center;
 
                     img {
-                        width: 100px;
+                        max-width: 100%;
+                        height: auto;
                     }
 
                     .pdfs {
@@ -274,7 +227,6 @@
                         display: inline-flex;
                         align-items: center;
                         gap: 0.35rem;
-                        font-family: "Montserrat", sans-serif;
                         font-weight: 700;
                         text-decoration: none;
 
@@ -360,6 +312,22 @@
                 right: 10px;
             }
         }
+
+        @media (max-width: 768px) {
+            .accordion {
+                .panel {
+                    &.show {
+                        max-height: none;
+                    }
+
+                    .content {
+                        flex-direction: column;
+                        align-items: stretch;
+                        gap: 1rem;
+                    }
+                }
+            }
+        }
     </style>
 </head>
 
@@ -373,8 +341,14 @@
     </div>
 
     <header class="header">
-        <h1><a href="https://costineest.github.io/parcela-40">parcela 40</a></h1>
+        <h1>
+            <a href="https://costineest.github.io/parcela-40">
+                <span class="left">parcela</span>
+                <span class="right">40</span>
+            </a>
+        </h1>
     </header>
+
     <nav>
         <ul class="tabs">
             <li class="tab active"><a href="#lotizare">Lotizare</a></li>
@@ -389,7 +363,7 @@
         <section id="case" class="section">
             <div class="accordion">
                 <button aria-expanded="false" aria-controls="casa-a" id="casa-a-button">
-                    Casă tip A
+                    Casa A
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="plus-icon">
                         <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 5v14m-7-7h14" />
@@ -397,7 +371,8 @@
                 </button>
                 <div id="casa-a" class="panel" role="region" aria-labelledby="casa-a-button">
                     <div class="content">
-                        <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/house.svg" alt="Casă" />
+                        <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@5fdbe/img/house.png" width="341"
+                            height="260" alt="Casă" />
 
                         <div class="pdfs">
                             <a class="pdf-link"
@@ -405,49 +380,49 @@
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>a0-parter.pdf</span>
+                                <span>Casa.a0.parter</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-a0-etaj.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>a0-etaj.pdf</span>
+                                <span>Casa.a0.etaj</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-a1-parter.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>a1-parter.pdf</span>
+                                <span>Casa.a1.parter</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-a1-etaj.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>a1-etaj.pdf</span>
+                                <span>Casa.a1.etaj</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-a2-parter.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>a2-parter.pdf</span>
+                                <span>casa.a2.parter</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-a2-etaj.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>a2-etaj.pdf</span>
+                                <span>casa.a2.etaj</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <button aria-expanded="false" aria-controls="casa-b" id="casa-b-button">
-                    Casă tip B
+                    Casa B
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="plus-icon">
                         <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 5v14m-7-7h14" />
@@ -455,7 +430,8 @@
                 </button>
                 <div id="casa-b" class="panel" role="region" aria-labelledby="casa-b-button">
                     <div class="content">
-                        <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/house.svg" alt="Casă" />
+                        <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@5fdbe/img/house.png" width="341"
+                            height="260" alt="Casă" />
 
                         <div class="pdfs">
                             <a class="pdf-link"
@@ -463,21 +439,21 @@
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>B-parter.pdf</span>
+                                <span>Casa.B.parter</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-B-etaj.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>B-etaj.pdf</span>
+                                <span>Casa.B.etaj</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <button aria-expanded="false" aria-controls="casa-c" id="casa-c-button">
-                    Casă tip C
+                    Casa C
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="plus-icon">
                         <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 5v14m-7-7h14" />
@@ -485,7 +461,8 @@
                 </button>
                 <div id="casa-c" class="panel" role="region" aria-labelledby="casa-c-button">
                     <div class="content">
-                        <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/house.svg" alt="Casă" />
+                        <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@5fdbe/img/house.png" width="341"
+                            height="260" alt="Casă" />
 
                         <div class="pdfs">
                             <a class="pdf-link"
@@ -493,35 +470,35 @@
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>c1-parter.pdf</span>
+                                <span>Casa.c1.parter</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-c1-etaj.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>c1-etaj.pdf</span>
+                                <span>Casa.c1.etaj</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-c2-parter.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>c2-parter.pdf</span>
+                                <span>Casa.c2.parter</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-c2-etaj.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>c2-etaj.pdf</span>
+                                <span>Casa.c2.etaj</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <button aria-expanded="false" aria-controls="casa-d" id="casa-d-button">
-                    Casă tip D
+                    Casa D
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="plus-icon">
                         <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 5v14m-7-7h14" />
@@ -529,7 +506,8 @@
                 </button>
                 <div id="casa-d" class="panel" role="region" aria-labelledby="casa-d-button">
                     <div class="content">
-                        <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/house.svg" alt="Casă" />
+                        <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@5fdbe/img/house.png" width="341"
+                            height="260" alt="Casă" />
 
                         <div class="pdfs">
                             <a class="pdf-link"
@@ -537,48 +515,48 @@
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>d1-parter.pdf</span>
+                                <span>Casa.d1.parter</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-d1-etaj1.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>d1-etaj1.pdf</span>
+                                <span>Casa.d1.etaj1</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-d1-etaj2.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>d1-etaj2.pdf</span>
+                                <span>Casa.d1.etaj2</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-d2-parter.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>d2-parter.pdf</span>
+                                <span>Casa.d2.parter</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-d2-etaj 1.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>d2-etaj 1.pdf</span>
+                                <span>Casa.d2.etaj1</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-d2-etaj2.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>d2-etaj2.pdf</span>
+                                <span>Casa.d2.etaj2</span>
                             </a>
                         </div>
                     </div>
                 </div>
                 <button aria-expanded="false" aria-controls="casa-e" id="casa-e-button">
-                    Casă tip E
+                    Casa E
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="plus-icon">
                         <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 5v14m-7-7h14" />
@@ -586,7 +564,8 @@
                 </button>
                 <div id="casa-e" class="panel" role="region" aria-labelledby="casa-e-button">
                     <div class="content">
-                        <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/house.svg" alt="Casă" />
+                        <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@5fdbe/img/house.png" width="341"
+                            height="260" alt="Casă" />
 
                         <div class="pdfs">
                             <a class="pdf-link"
@@ -594,27 +573,27 @@
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>e-parter.pdf</span>
+                                <span>casa.e.parter</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-e-etaj1.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>e-etaj1.pdf</span>
+                                <span>casa.e.etaj1</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-e-etaj2.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>e-etaj2.pdf</span>
+                                <span>casa.e.etaj2</span>
                             </a>
                         </div>
                     </div>
                 </div>
                 <button aria-expanded="false" aria-controls="casa-f" id="casa-f-button">
-                    Casă tip F
+                    Casa F
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="plus-icon">
                         <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 5v14m-7-7h14" />
@@ -622,7 +601,8 @@
                 </button>
                 <div id="casa-f" class="panel" role="region" aria-labelledby="casa-f-button">
                     <div class="content">
-                        <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/house.svg" alt="Casă" />
+                        <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@5fdbe/img/house.png" width="341"
+                            height="260" alt="Casă" />
 
                         <div class="pdfs">
                             <a class="pdf-link"
@@ -630,34 +610,34 @@
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>f1-parter.pdf</span>
+                                <span>Casa.f1.parter</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-f1-etaj.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>f1-etaj.pdf</span>
+                                <span>Casa.f1.etaj</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3.2_-f2-parter.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>f2-parter.pdf</span>
+                                <span>Casa.f2.parter</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3.2_-f2-etaj.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>f2-etaj.pdf</span>
+                                <span>Casa.f2.etaj</span>
                             </a>
                         </div>
                     </div>
                 </div>
                 <button aria-expanded="false" aria-controls="casa-g" id="casa-g-button">
-                    Casă tip G
+                    Casa G
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="plus-icon">
                         <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 5v14m-7-7h14" />
@@ -665,7 +645,8 @@
                 </button>
                 <div id="casa-g" class="panel" role="region" aria-labelledby="casa-g-button">
                     <div class="content">
-                        <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/house.svg" alt="Casă" />
+                        <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@5fdbe/img/house.png" width="341"
+                            height="260" alt="Casă" />
 
                         <div class="pdfs">
                             <a class="pdf-link"
@@ -673,14 +654,14 @@
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>g-parter.pdf</span>
+                                <span>Casa.g.parter</span>
                             </a>
                             <a class="pdf-link"
                                 href="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/pdf/balotesti v 3_-g-etaj.pdf"
                                 target="_blank" rel="noopener" title="Se poate deschide în browser sau descărca">
                                 <img src="https://cdn.jsdelivr.net/gh/costinEEST/parcela-40@f8322/img/pdf.svg"
                                     alt="PDF icon" class="pdf-icon" aria-hidden="true" />
-                                <span>g-etaj.pdf</span>
+                                <span>Casa.g.etaj</span>
                             </a>
                         </div>
                     </div>
