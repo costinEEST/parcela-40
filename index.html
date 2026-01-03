@@ -42,39 +42,6 @@
             text-transform: uppercase;
         }
 
-        .video-bg {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            overflow: hidden;
-            background: #000;
-
-            &::after {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: rgba(255, 255, 255, 0.6);
-            }
-
-        }
-
-        .video-bg iframe {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 177.77vh;
-            /* 16:9 ratio */
-            height: 100vh;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-        }
-
-        @media (max-width: 768px) {
-            .video-bg {
-                display: none;
-            }
-        }
-
         h1,
         h2,
         h3,
@@ -332,14 +299,6 @@
 </head>
 
 <body>
-    <div class="video-bg">
-        <iframe
-            src="https://www.youtube-nocookie.com/embed/Z2DC9mqBEVo?start=58&autoplay=1&mute=1&controls=0&loop=1&playlist=Z2DC9mqBEVo&playsinline=1"
-            title="Background video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"
-            referrerpolicy="strict-origin-when-cross-origin">
-        </iframe>
-    </div>
-
     <header class="header">
         <h1>
             <a href="https://costineest.github.io/parcela-40">
